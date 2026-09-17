@@ -1,42 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listado de Productos</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="dashboard_style.css">
-  <script src="dashboard.js"></script>
-</head>
-<body>
-  <div class="dashboard-container">
-    <header>
-      <span>Gestor de turnos</span>
-      <div>
-        <button id="menu" class="menu">&#9776;</button>
-        <button id="logout">Cerrar Sesión</button>
-      </div>
-    </header>
-    <nav id="sidebar">
-      <ul>
-        <li><a href="#">Panel</a></li>
-      </ul>
-    </nav>
-    <main>
-      <h1>Pacientes</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Paciente</th>
-          </tr>
-        </thead>
-        <tbody id="product-table-body">
-          <!-- Los productos se cargarán aquí dinámicamente -->
-        </tbody>
-      </table>
-    </main>
-    <footer>Mi Aplicación &copy; 2024</footer>
-  </div>
-</body>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel de gestión</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="dashboard_style.css" />
+    <script src="dashboard.js" defer></script>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <aside id="sidebar" class="sidebar">
+        <div class="brand">
+          <h2>Admin Portal</h2>
+          <p>Healthcare Management</p>
+        </div>
+        <nav>
+          <a class="nav-link active" href="#">Panel</a
+          ><a class="nav-link" href="#">Doctores</a
+          ><a class="nav-link" href="#">Especialidades</a
+          ><a class="nav-link" href="#">Búsqueda de Pacientes</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <a class="nav-link" href="#">Configuración</a
+          ><a class="nav-link" id="logout" href="#">Cerrar Sesión</a>
+          <div class="user-placeholder">
+            <span class="avatar-placeholder"></span
+            ><span
+              ><strong>Jorge Perez</strong
+              ><small>Administrador Jefe</small></span
+            >
+          </div>
+        </div>
+      </aside>
+      <header class="topbar">
+        <span class="mobile-title">Admin Portal</span
+        ><button class="menu" type="button" aria-label="Abrir navegación">
+          Menú
+        </button>
+      </header>
+      <main class="main-content">
+        <section class="page-heading">
+          <h1>Vista General de Gestión</h1>
+          <p>
+            Configure el personal médico y las especialidades del departamento.
+          </p>
+          <div class="actions">
+            <button class="button button-primary">Agregar Nuevo Doctor</button
+            ><button class="button button-secondary">
+              Agregar Nueva Especialidad
+            </button>
+          </div>
+        </section>
+        <section class="stats-grid">
+          <article class="stat-card">
+            <span class="placeholder-box">Dato</span>
+            <p>Doctores activos</p>
+            <strong>124</strong>
+          </article>
+          <article class="stat-card">
+            <span class="placeholder-box">Dato</span>
+            <p>Especialidades activas</p>
+            <strong>32</strong>
+          </article>
+          <article class="stat-card">
+            <span class="placeholder-box">Dato</span>
+            <p>Turnos confirmados para hoy</p>
+            <strong>48</strong>
+          </article>
+        </section>
+        <section class="directory">
+          <div class="directory-heading">
+            <h2>Directorio de Profesionales Médicos</h2>
+            <input type="search" placeholder="Buscar por nombre..." />
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nombre del Doctor</th>
+                  <th>Especialidad</th>
+                  <th>Estado de Disponibilidad</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="avatar-placeholder"></span>Dr. James Wilson
+                  </td>
+                  <td>Cardiología</td>
+                  <td><span class="status">Activo</span></td>
+                  <td><button class="text-button">Ver</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="avatar-placeholder"></span>Dr. Elena Rodríguez
+                  </td>
+                  <td>Neurología</td>
+                  <td><span class="status">Activo</span></td>
+                  <td><button class="text-button">Ver</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="avatar-placeholder"></span>Dr. Robert Chen
+                  </td>
+                  <td>Pediatría</td>
+                  <td>
+                    <span class="status status-warning">De licencia</span>
+                  </td>
+                  <td><button class="text-button">Ver</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="directory-footer">Mostrando 1 a 3 de 124 resultados</div>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>
