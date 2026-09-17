@@ -7,6 +7,7 @@
     "main"
     "footer";
   height: 100dvh;
+
 }
 
 .dashboard-container nav {
@@ -67,6 +68,7 @@
       "header header"
       "nav main"
       "footer footer";
+
   }
 
   .dashboard-container nav {
@@ -79,4 +81,11 @@
   .dashboard-container header div .menu {
     display: none;
   }
+
+}
+
+#sidebar.open {
+
+  left: 0;
+
 }
