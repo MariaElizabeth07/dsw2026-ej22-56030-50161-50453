@@ -16,3 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+const eyeButton = document.querySelector('.eye-btn');
+
+eyeButton.addEventListener("click", function(){
+    const password = document.getElementById('password');
+    if(password.type === 'password') {
+        password.type = 'text';
+        eyeButton.innerHTML = '<i class="bi bi-eye-slash-fill"></i>';
+    } else {
+        password.type = 'password';
+        eyeButton.innerHTML = '<i class="bi bi-eye-fill"></i>';
+    }
+});
