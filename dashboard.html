@@ -6,6 +6,10 @@
     <title>Panel de gestión</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="dashboard_style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
     <script src="dashboard.js" defer></script>
   </head>
   <body>
@@ -15,15 +19,26 @@
           <h2>Admin Portal</h2>
           <p>Healthcare Management</p>
         </div>
-        <nav>
-          <a class="nav-link active" href="#">Panel</a
-          ><a class="nav-link" href="#">Doctores</a
-          ><a class="nav-link" href="#">Especialidades</a
-          ><a class="nav-link" href="#">Búsqueda de Pacientes</a>
+        <nav class="sidebar-nav">
+          <a class="nav-link active" href="#"
+            ><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i>Panel</a
+          ><a class="nav-link" href="#"
+            ><i class="bi bi-person-badge" aria-hidden="true"></i>Doctores</a
+          ><a class="nav-link" href="#"
+            ><i class="bi bi-heart-pulse" aria-hidden="true"></i
+            >Especialidades</a
+          ><a class="nav-link" href="#"
+            ><i class="bi bi-search" aria-hidden="true"></i>Búsqueda de
+            Pacientes</a
+          >
         </nav>
         <div class="sidebar-bottom">
-          <a class="nav-link" href="#">Configuración</a
-          ><a class="nav-link" id="logout" href="#">Cerrar Sesión</a>
+          <a class="nav-link" href="#"
+            ><i class="bi bi-gear" aria-hidden="true"></i>Configuración</a
+          ><a class="nav-link" id="logout" href="#"
+            ><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Cerrar
+            Sesión</a
+          >
           <div class="user-placeholder">
             <span class="avatar-placeholder"></span
             ><span
@@ -34,9 +49,17 @@
         </div>
       </aside>
       <header class="topbar">
-        <span class="mobile-title">Admin Portal</span
-        ><button class="menu" type="button" aria-label="Abrir navegación">
-          Menú
+        <span class="mobile-title">Admin Portal</span>
+        <button
+          class="menu"
+          id="menu"
+          type="button"
+          aria-label="Abrir navegación"
+          aria-expanded="false"
+          aria-controls="sidebar"
+        >
+          <i class="bi bi-list" aria-hidden="true"></i>
+          <span>Menú</span>
         </button>
       </header>
       <main class="main-content">
@@ -46,8 +69,11 @@
             Configure el personal médico y las especialidades del departamento.
           </p>
           <div class="actions">
-            <button class="button button-primary">Agregar Nuevo Doctor</button
+            <button class="button button-primary">
+              <i class="bi bi-plus-lg" aria-hidden="true"></i>Agregar Nuevo
+              Doctor</button
             ><button class="button button-secondary">
+              <i class="bi bi-plus-lg" aria-hidden="true"></i>
               Agregar Nueva Especialidad
             </button>
           </div>
