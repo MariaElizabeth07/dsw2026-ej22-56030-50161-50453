@@ -232,6 +232,10 @@ body {
   border-radius: 15px;
 }
 
+.placeholder-box i {
+  font-size: 26px;
+}
+
 .stat-card p {
   margin: 24px 0 8px;
   font-size: 14px;
@@ -471,7 +475,8 @@ th {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
   width: 100%;
   padding: 13px;
   color: #263548;
@@ -480,6 +485,10 @@ th {
   background: #eef9fd;
   border: 1px solid #ced9e2;
   border-radius: 6px;
+}
+
+.form-group select {
+  appearance: auto;
 }
 
 .form-group textarea {
@@ -536,4 +545,335 @@ th {
   margin: 0 0 16px;
   color: #159b91;
   font-weight: bold;
+}
+
+.form-success {
+  min-height: 1.2em;
+  margin: 0 0 16px;
+  color: #159b91;
+  font-weight: bold;
+}
+
+.toast {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  z-index: 100;
+  padding: 14px 18px;
+  color: #fff;
+  text-align: center;
+  background: #123766;
+  border-radius: 7px;
+  box-shadow: 0 6px 18px rgba(18, 55, 102, 0.25);
+}
+
+@media (min-width: 600px) {
+  .toast {
+    right: 24px;
+    bottom: 24px;
+    left: auto;
+    min-width: 280px;
+  }
+}
+
+/* ---------- Formulario de nueva especialidad ---------- */
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 24px;
+  color: #8da0b8;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.breadcrumb a {
+  color: #617895;
+  text-decoration: none;
+}
+
+.breadcrumb i {
+  font-size: 12px;
+}
+
+.specialty-heading {
+  margin-bottom: 28px;
+}
+
+.specialty-heading h1 {
+  margin: 0;
+  color: #123766;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.specialty-heading p {
+  margin: 10px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.specialty-form-card {
+  width: 100%;
+  max-width: none;
+  border-radius: 3px;
+}
+
+.specialty-form-card .form-group {
+  margin-bottom: 28px;
+}
+
+.specialty-form-card .form-group label {
+  color: #263548;
+  font-weight: 400;
+}
+
+.specialty-form-card .form-group input,
+.specialty-form-card .form-group textarea,
+.specialty-form-card .form-group select {
+  padding: 15px 18px;
+  background: #fff;
+}
+
+.specialty-form-card .form-group textarea {
+  min-height: 170px;
+}
+
+.specialty-form-card .form-group input::placeholder,
+.specialty-form-card .form-group textarea::placeholder {
+  color: #bac7d8;
+}
+
+.specialty-form-card .error-message:empty {
+  display: none;
+}
+
+.specialty-form-card .form-success:empty {
+  display: none;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid #e7edf2;
+}
+
+.form-actions .button {
+  text-decoration: none;
+}
+
+@media (min-width: 801px) {
+  .specialty-content {
+    padding-top: 92px;
+  }
+
+  .breadcrumb {
+    margin-bottom: 26px;
+    font-size: 16px;
+  }
+
+  .specialty-heading {
+    margin-bottom: 32px;
+  }
+
+  .specialty-heading h1 {
+    font-size: 20px;
+  }
+
+  .specialty-heading p {
+    font-size: 18px;
+  }
+
+  .specialty-form-card {
+    padding: 30px;
+  }
+
+  .specialty-form-card .form-group {
+    margin-bottom: 30px;
+  }
+
+  .specialty-form-card .form-group label,
+  .specialty-form-card .form-group input,
+  .specialty-form-card .form-group textarea,
+  .specialty-form-card .form-group select {
+    font-size: 17px;
+  }
+
+  .specialty-form-card .form-group textarea {
+    min-height: 220px;
+  }
+
+  .form-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+/* ---------- Página de especialidades ---------- */
+
+.specialties-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 28px;
+}
+
+.specialties-heading h1 {
+  margin: 0;
+  color: #123766;
+  font-size: 31px;
+  line-height: 1.15;
+}
+
+.specialties-heading p {
+  max-width: 620px;
+  margin: 12px 0 0;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.specialties-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.specialties-actions .search-box {
+  position: relative;
+}
+
+.specialties-actions .search-box i {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  color: #617083;
+}
+
+.specialties-actions input {
+  width: 100%;
+  padding: 13px 13px 13px 42px;
+  font-size: 16px;
+  background: #fff;
+  border: 1px solid #ced9e2;
+  border-radius: 6px;
+}
+
+.specialties-directory table {
+  min-width: 700px;
+}
+
+.specialty-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-right: 12px;
+  color: #12518e;
+  background: #dff3fc;
+  font-size: 22px;
+  vertical-align: middle;
+}
+
+.specialty-status {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 18px;
+}
+
+.specialty-status.active {
+  color: #087f6d;
+  background: #c8faed;
+}
+
+.specialty-status.inactive {
+  color: #536477;
+  background: #e2e8f0;
+}
+
+.icon-button {
+  margin-right: 12px;
+  padding: 4px;
+  color: #8da0b8;
+  font-size: 20px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.specialty-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.specialty-stats article {
+  position: relative;
+  min-height: 145px;
+  padding: 24px 28px;
+  background: #fff;
+  border: 1px solid #ced9e2;
+  border-left: 5px solid #12518e;
+  border-radius: 10px;
+}
+
+.specialty-stats article:last-child {
+  border-left-color: #38d6bd;
+}
+
+.specialty-stats i {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: #12518e;
+  font-size: 24px;
+}
+
+.specialty-stats p {
+  margin: 10px 0;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.specialty-stats strong {
+  color: #123766;
+  font-size: 24px;
+}
+
+@media (min-width: 801px) {
+  .specialties-heading {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 42px;
+  }
+
+  .specialties-heading h1 {
+    font-size: 42px;
+  }
+
+  .specialties-actions {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .specialties-actions .search-box {
+    width: 380px;
+  }
+
+  .specialties-actions .button {
+    min-width: 208px;
+  }
+
+  .specialty-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+  }
 }
