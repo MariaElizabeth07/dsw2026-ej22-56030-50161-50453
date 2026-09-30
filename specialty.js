@@ -13,15 +13,39 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = 'login.html';
   });
 
-  const NAME_MAX_LENGTH = 15;
-  const DESCRIPTION_MAX_LENGTH = 100;
+  const NAME_MAX_LENGTH = 60;
+  const DESCRIPTION_MAX_LENGTH = 300;
 
   const form = document.getElementById('specialty-form');
   const nameInput = document.getElementById('name');
   const descriptionInput = document.getElementById('description');
+  const statusInput = document.getElementById('status');
   const nameError = document.getElementById('name-error');
   const descriptionError = document.getElementById('description-error');
-  const successMessage = document.getElementById('form-success');
+  const formTitle = document.getElementById('form-title');
+  const formDescription = document.getElementById('form-description');
+  const breadcrumbCurrent = document.getElementById('breadcrumb-current');
+  const submitLabel = document.getElementById('submit-label');
+  const specialtyId = new URLSearchParams(window.location.search).get('id');
+  const specialtyToEdit = specialtyId ? getSpecialtyById(specialtyId) : null;
+
+  if (specialtyId && !specialtyToEdit) {
+    saveToast('No se encontró la especialidad seleccionada.');
+    window.location.href = 'specialties.html';
+    return;
+  }
+
+  if (specialtyToEdit) {
+    document.title = 'Editar Especialidad';
+    formTitle.textContent = 'Editar Especialidad';
+    formDescription.textContent =
+      'Modifique la información técnica y administrativa de la especialidad médica.';
+    breadcrumbCurrent.textContent = 'Editar Especialidad';
+    submitLabel.textContent = 'Guardar Cambios';
+    nameInput.value = specialtyToEdit.name;
+    descriptionInput.value = specialtyToEdit.description;
+    statusInput.value = specialtyToEdit.status || 'Activo';
+  }
 
   const showError = (input, errorElement, message) => {
     errorElement.textContent = message;
@@ -72,21 +96,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const saveSpecialty = (event) => {
     event.preventDefault();
-    successMessage.textContent = '';
 
     if (!validateForm()) {
       return;
     }
 
-    const specialty = addSpecialty({
-      id: crypto.randomUUID(),
+    const specialty = {
+      id: specialtyToEdit ? specialtyToEdit.id : crypto.randomUUID(),
       name: nameInput.value.trim(),
       description: descriptionInput.value.trim(),
-    });
+      status: statusInput.value,
+    };
 
-    console.log(specialty);
-    successMessage.textContent = 'Especialidad guardada correctamente.';
-    form.reset();
+    if (specialtyToEdit) {
+      updateSpecialty(specialty);
+      saveToast('Especialidad actualizada correctamente.');
+    } else {
+      addSpecialty(specialty);
+      saveToast('Especialidad agregada correctamente.');
+    }
+
+    window.location.href = 'specialties.html';
   };
 
   form.addEventListener('submit', saveSpecialty);
@@ -95,6 +125,4 @@ document.addEventListener('DOMContentLoaded', () => {
     clearError(descriptionInput, descriptionError)
   );
 
-  nameInput.addEventListener('input', () => (successMessage.textContent = ''));
-  descriptionInput.addEventListener('input', () => (successMessage.textContent = ''));
 });
