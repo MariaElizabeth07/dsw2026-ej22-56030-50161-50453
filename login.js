@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const passwordInput = document.getElementById('password');
   const toggleButton = document.getElementById('togglePassword');
 
+  // Mostrar / ocultar contraseña
   toggleButton.addEventListener('click', function () {
     const isPassword = passwordInput.type === 'password';
     passwordInput.type = isPassword ? 'text' : 'password';
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     );
   });
 
+  // Envío del formulario
   form.addEventListener('submit', function (event) {
     event.preventDefault();
 
