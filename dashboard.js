@@ -12,4 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   logoutButton.addEventListener('click', () => {
     window.location.href = 'login.html';
   });
+
+  document.getElementById('add-specialty').addEventListener('click', () => {
+    window.location.href = 'specialty.html';
+  });
+  
 });
