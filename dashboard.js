@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = 'login.html';
   });
 
+  document.getElementById('add-specialty').addEventListener('click', () => {
+    window.location.href = 'specialty.html';
+  });
+  
+});
   const renderTable = (list) => {
     tableBody.innerHTML = '';
 

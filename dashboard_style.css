@@ -444,3 +444,56 @@ th {
     padding: 20px 34px;
   }
 }
+
+.form-card {
+  max-width: 700px;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid #ced9e2;
+  border-radius: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  color: #123766;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 13px;
+  color: #263548;
+  font-family: inherit;
+  font-size: 16px;
+  background: #eef9fd;
+  border: 1px solid #ced9e2;
+  border-radius: 6px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-group input.input-error,
+.form-group textarea.input-error {
+  border-color: #c0392b;
+}
+
+.error-message {
+  min-height: 1.2em;
+  color: #c0392b;
+  font-size: 14px;
+}
+
+@media (min-width: 801px) {
+  .form-card {
+    padding: 34px;
+  }
+}
