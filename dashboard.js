@@ -1,3 +1,5 @@
+const PAGE_SIZE = 5;
+
 document.addEventListener('DOMContentLoaded', () => {
   const logoutButton = document.getElementById('logout');
   const menuButton = document.getElementById('menu');
@@ -9,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const tableBody = document.getElementById('specialties-body');
   const footer = document.getElementById('directory-footer');
 
-  let specialties = [];
+  let currentPage = 1;
 
   menuButton.addEventListener('click', () => {
     const isOpen = sidebar.classList.toggle('open');
@@ -23,8 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('add-specialty').addEventListener('click', () => {
     window.location.href = 'specialty.html';
   });
-  
-});
+
   const renderTable = (list) => {
     tableBody.innerHTML = '';
 
@@ -36,55 +37,91 @@ document.addEventListener('DOMContentLoaded', () => {
       cell.textContent = 'No se encontraron especialidades.';
       row.appendChild(cell);
       tableBody.appendChild(row);
-    } else {
-      list.forEach((specialty) => {
-        const row = document.createElement('tr');
-
-        const nameCell = document.createElement('td');
-        nameCell.textContent = specialty.name;
-
-        const descriptionCell = document.createElement('td');
-        descriptionCell.textContent = specialty.description;
-
-        row.append(nameCell, descriptionCell);
-        tableBody.appendChild(row);
-      });
+      return;
     }
 
-    footer.textContent = `Mostrando ${list.length} de ${specialties.length} resultados`;
+    list.forEach((specialty) => {
+      const row = document.createElement('tr');
+
+      const nameCell = document.createElement('td');
+      nameCell.textContent = specialty.name;
+
+      const descriptionCell = document.createElement('td');
+      descriptionCell.textContent = specialty.description;
+
+      row.append(nameCell, descriptionCell);
+      tableBody.appendChild(row);
+    });
+  };
+
+  const renderFooter = (totalFiltered, totalGeneral, totalPages) => {
+    footer.innerHTML = '';
+
+    const info = document.createElement('span');
+    info.textContent = `Mostrando ${totalFiltered === 0 ? 0 : (currentPage - 1) * PAGE_SIZE + 1}-${Math.min(currentPage * PAGE_SIZE, totalFiltered)} de ${totalFiltered} resultados (${totalGeneral} en total)`;
+
+    const pagination = document.createElement('div');
+    pagination.className = 'pagination';
+
+    const prevButton = document.createElement('button');
+    prevButton.type = 'button';
+    prevButton.className = 'button button-secondary';
+    prevButton.textContent = 'Anterior';
+    prevButton.disabled = currentPage <= 1;
+    prevButton.addEventListener('click', () => {
+      currentPage -= 1;
+      filterTable();
+    });
+
+    const pageIndicator = document.createElement('span');
+    pageIndicator.textContent = `Página ${totalPages === 0 ? 0 : currentPage} de ${totalPages}`;
+
+    const nextButton = document.createElement('button');
+    nextButton.type = 'button';
+    nextButton.className = 'button button-secondary';
+    nextButton.textContent = 'Siguiente';
+    nextButton.disabled = currentPage >= totalPages;
+    nextButton.addEventListener('click', () => {
+      currentPage += 1;
+      filterTable();
+    });
+
+    pagination.append(prevButton, pageIndicator, nextButton);
+    footer.append(info, pagination);
   };
 
   const filterTable = () => {
+    const allSpecialties = getSpecialties();
     const criteria = searchInput.value.trim().toLowerCase();
-    const filtered = specialties.filter((specialty) =>
+
+    const filtered = allSpecialties.filter((specialty) =>
       specialty.name.toLowerCase().includes(criteria)
     );
-    renderTable(filtered);
-  };
 
-  searchButton.addEventListener('click', filterTable);
+    const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
 
-  const loadSpecialties = async () => {
-    try {
-      const response = await fetch('specialties.json');
-      if (!response.ok) {
-        throw new Error(`Error HTTP ${response.status}`);
-      }
-      specialties = await response.json();
-      renderTable(specialties);
-    } catch (error) {
-      console.error('No se pudo cargar specialties.json:', error);
-      tableBody.innerHTML = '';
-      const row = document.createElement('tr');
-      row.className = 'empty-row';
-      const cell = document.createElement('td');
-      cell.colSpan = 2;
-      cell.textContent = 'No se pudieron cargar las especialidades.';
-      row.appendChild(cell);
-      tableBody.appendChild(row);
-      footer.textContent = '';
+    if (currentPage > totalPages) {
+      currentPage = totalPages || 1;
     }
+
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const pageItems = filtered.slice(start, start + PAGE_SIZE);
+
+    renderTable(pageItems);
+    renderFooter(filtered.length, allSpecialties.length, totalPages);
   };
 
-  loadSpecialties();
+  searchButton.addEventListener('click', () => {
+    currentPage = 1;
+    filterTable();
+  });
+
+  searchInput.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+      currentPage = 1;
+      filterTable();
+    }
+  });
+
+  filterTable();
 });

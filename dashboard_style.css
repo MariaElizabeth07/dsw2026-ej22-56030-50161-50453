@@ -336,6 +336,11 @@ th {
 }
 
 .directory-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   padding: 18px 22px;
   color: #536477;
   background: #e4f4fc;
@@ -496,4 +501,39 @@ th {
   .form-card {
     padding: 34px;
   }
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.page-button {
+  min-width: 38px;
+  padding: 8px 12px;
+  color: #12518e;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid #12518e;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.page-button.active {
+  color: #fff;
+  background: #12518e;
+}
+
+.page-button:disabled {
+  color: #9aa8b6;
+  border-color: #ced9e2;
+  cursor: not-allowed;
+}
+
+.success-message {
+  min-height: 1.2em;
+  margin: 0 0 16px;
+  color: #159b91;
+  font-weight: bold;
 }

@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const descriptionInput = document.getElementById('description');
   const nameError = document.getElementById('name-error');
   const descriptionError = document.getElementById('description-error');
+  const successMessage = document.getElementById('form-success');
 
   const showError = (input, errorElement, message) => {
     errorElement.textContent = message;
@@ -71,16 +72,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const saveSpecialty = (event) => {
     event.preventDefault();
+    successMessage.textContent = '';
 
-    if (!validateForm()) {return;
+    if (!validateForm()) {
+      return;
     }
 
-    const specialty = {
+    const specialty = addSpecialty({
+      id: crypto.randomUUID(),
       name: nameInput.value.trim(),
       description: descriptionInput.value.trim(),
-    };
+    });
 
     console.log(specialty);
+    successMessage.textContent = 'Especialidad guardada correctamente.';
     form.reset();
   };
 
@@ -89,4 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
   descriptionInput.addEventListener('input', () =>
     clearError(descriptionInput, descriptionError)
   );
+
+  nameInput.addEventListener('input', () => (successMessage.textContent = ''));
+  descriptionInput.addEventListener('input', () => (successMessage.textContent = ''));
 });
