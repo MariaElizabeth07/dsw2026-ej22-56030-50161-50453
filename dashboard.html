@@ -89,50 +89,35 @@
         </section>
         <section class="directory">
           <div class="directory-heading">
-            <h2>Directorio de Profesionales Médicos</h2>
-            <input type="search" placeholder="Buscar por nombre..." />
+            <h2>Especialidades Médicas</h2>
+            <div class="search-box">
+              <input
+                type="search"
+                id="search-input"
+                placeholder="Buscar por nombre..."
+                aria-label="Buscar especialidad por nombre"
+              />
+              <button
+                type="button"
+                id="search-button"
+                class="button button-primary search-button"
+              >
+                <i class="bi bi-search" aria-hidden="true"></i>Buscar
+              </button>
+            </div>
           </div>
           <div class="table-wrap">
-            <table>
+            <table id="specialties-table">
               <thead>
                 <tr>
-                  <th>Nombre del Doctor</th>
-                  <th>Especialidad</th>
-                  <th>Estado de Disponibilidad</th>
-                  <th>Acciones</th>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <span class="avatar-placeholder"></span>Dr. James Wilson
-                  </td>
-                  <td>Cardiología</td>
-                  <td><span class="status">Activo</span></td>
-                  <td><button class="text-button">Ver</button></td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="avatar-placeholder"></span>Dr. Elena Rodríguez
-                  </td>
-                  <td>Neurología</td>
-                  <td><span class="status">Activo</span></td>
-                  <td><button class="text-button">Ver</button></td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="avatar-placeholder"></span>Dr. Robert Chen
-                  </td>
-                  <td>Pediatría</td>
-                  <td>
-                    <span class="status status-warning">De licencia</span>
-                  </td>
-                  <td><button class="text-button">Ver</button></td>
-                </tr>
-              </tbody>
+              <tbody id="specialties-body"></tbody>
             </table>
           </div>
-          <div class="directory-footer">Mostrando 1 a 3 de 124 resultados</div>
+          <div class="directory-footer" id="directory-footer"></div>
         </section>
       </main>
     </div>
