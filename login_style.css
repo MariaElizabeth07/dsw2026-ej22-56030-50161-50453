@@ -201,3 +201,10 @@
 .login-note strong {
   color: var(--color-text-dark);
 }
+
+body {
+  margin: 0;
+  font-size: 2rem;
+  height: 100dvh;
+  font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
