@@ -22,23 +22,34 @@
         </div>
         <nav class="sidebar-nav">
           <a class="nav-link active" href="#">
-            <i class="bi bi-grid-1x2-fill" aria-hidden="true"></i>Panel</a>
+            <i class="bi bi-grid-1x2-fill" aria-hidden="true"></i>Panel</a
+          >
           <a class="nav-link" href="#">
-            <i class="bi bi-person-badge" aria-hidden="true"></i>Doctores</a>
-          <a class="nav-link" href="specialty.html">
-            <i class="bi bi-heart-pulse" aria-hidden="true"></i>Especialidades</a>
-          <a class="nav-link" href="speciality.html">
-            <i class="bi bi-search" aria-hidden="true"></i>Búsqueda de Pacientes</a>
+            <i class="bi bi-person-badge" aria-hidden="true"></i>Doctores</a
+          >
+          <a class="nav-link" href="specialties.html">
+            <i class="bi bi-heart-pulse" aria-hidden="true"></i
+            >Especialidades</a
+          >
+          <a class="nav-link" href="#">
+            <i class="bi bi-search" aria-hidden="true"></i>Búsqueda de
+            Pacientes</a
+          >
         </nav>
         <div class="sidebar-bottom">
           <a class="nav-link" href="#">
-            <i class="bi bi-gear" aria-hidden="true"></i>Configuración</a>
-            <a class="nav-link" id="logout" href="#">
-              <i class="bi bi-box-arrow-right" aria-hidden="true"></i>Cerrar Sesión</a>
+            <i class="bi bi-gear" aria-hidden="true"></i>Configuración</a
+          >
+          <a class="nav-link" id="logout" href="#">
+            <i class="bi bi-box-arrow-right" aria-hidden="true"></i>Cerrar
+            Sesión</a
+          >
           <div class="user-placeholder">
             <span class="avatar-placeholder"></span>
-            <span><strong>Jorge Perez</strong>
-              <small>Administrador Jefe</small></span>
+            <span
+              ><strong>Jorge Perez</strong>
+              <small>Administrador Jefe</small></span
+            >
           </div>
         </div>
       </aside>
@@ -64,8 +75,10 @@
           </p>
           <div class="actions">
             <button class="button button-primary">
-              <i class="bi bi-plus-lg" aria-hidden="true"></i>Agregar Nuevo Doctor</button>
-              <button class="button button-secondary" id="add-specialty">
+              <i class="bi bi-plus-lg" aria-hidden="true"></i>Agregar Nuevo
+              Doctor
+            </button>
+            <button class="button button-secondary" id="add-specialty">
               <i class="bi bi-plus-lg" aria-hidden="true"></i>
               Agregar Nueva Especialidad
             </button>
@@ -73,30 +86,36 @@
         </section>
         <section class="stats-grid">
           <article class="stat-card">
-            <span class="placeholder-box">Dato</span>
+            <span class="placeholder-box"
+              ><i class="bi bi-person-badge"></i
+            ></span>
             <p>Doctores activos</p>
             <strong>124</strong>
           </article>
           <article class="stat-card">
-            <span class="placeholder-box">Dato</span>
+            <span class="placeholder-box"
+              ><i class="bi bi-grid-1x2"></i
+            ></span>
             <p>Especialidades activas</p>
             <strong>32</strong>
           </article>
           <article class="stat-card">
-            <span class="placeholder-box">Dato</span>
+            <span class="placeholder-box"
+              ><i class="bi bi-calendar-check"></i
+            ></span>
             <p>Turnos confirmados para hoy</p>
             <strong>48</strong>
           </article>
         </section>
         <section class="directory">
           <div class="directory-heading">
-            <h2>Especialidades Médicas</h2>
+            <h2>Directorio de Profesionales Médicos</h2>
             <div class="search-box">
               <input
                 type="search"
                 id="search-input"
                 placeholder="Buscar por nombre..."
-                aria-label="Buscar especialidad por nombre"
+                aria-label="Buscar médico por nombre"
               />
               <button
                 type="button"
@@ -111,16 +130,58 @@
             <table id="specialties-table">
               <thead>
                 <tr>
-                  <th>Nombre</th>
-                  <th>Descripción</th>
+                  <th>Nombre del Doctor</th>
+                  <th>Especialidad</th>
+                  <th>Estado de Disponibilidad</th>
                 </tr>
               </thead>
-              <tbody id="specialties-body"></tbody>
+              <tbody id="doctors-body">
+                <tr>
+                  <td>
+                    <span class="avatar-placeholder"></span
+                    ><strong>Dr. James Wilson</strong>
+                  </td>
+                  <td>Cardiología</td>
+                  <td><span class="status">Activo</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="avatar-placeholder"></span
+                    ><strong>Dr. Elena Rodriguez</strong>
+                  </td>
+                  <td>Neurología</td>
+                  <td><span class="status">Activo</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="avatar-placeholder"></span
+                    ><strong>Dr. Robert Chen</strong>
+                  </td>
+                  <td>Pediatría</td>
+                  <td>
+                    <span class="status status-warning">De Licencia</span>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
           <div class="directory-footer">
-            <span id="directory-info"></span>
-            <nav id="pagination" class="pagination" aria-label="Paginación"></nav>
+            <span>Mostrando 1 a 3 de 124 resultados</span>
+            <nav class="pagination" aria-label="Paginación">
+              <button
+                class="page-button"
+                type="button"
+                disabled
+              >
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <button
+                class="page-button"
+                type="button"
+              >
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </nav>
           </div>
         </section>
       </main>
