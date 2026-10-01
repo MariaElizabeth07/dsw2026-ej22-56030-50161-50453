@@ -21,10 +21,10 @@
   justify-content: center;
   padding: 2rem 1rem;
   background: radial-gradient(
-      circle at center,
-      var(--color-bg-dark-2) 0%,
-      var(--color-bg-dark) 70%
-    );
+    circle at center,
+    var(--color-bg-dark-2) 0%,
+    var(--color-bg-dark) 70%
+  );
 }
 
 .login-wrapper {
@@ -74,10 +74,18 @@
 
 .login-card {
   width: 100%;
+  box-sizing: border-box;
   background-color: var(--color-card-bg);
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (max-width: 599px) {
+  .login-card {
+    width: calc(100% - 2rem);
+    margin-inline: 0.5rem;
+  }
 }
 
 .login-card__title {
@@ -206,5 +214,5 @@ body {
   margin: 0;
   font-size: 2rem;
   height: 100dvh;
-  font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
